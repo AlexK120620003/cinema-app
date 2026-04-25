@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-export default function useLocalStorage(key = '', initialValue = '') { 
-  const result = localStorage.getItem(key)
+export default function useLocalStorage(key = '', initialValue = '') {
+  const result = typeof window !== 'undefined' && localStorage.getItem(key)
     ? JSON.parse(localStorage.getItem(key)!)
     : initialValue;
   const [value, setValue] = useState(result);
